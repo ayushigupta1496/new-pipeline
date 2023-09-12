@@ -24,8 +24,8 @@ pipeline{
 			stage (" Push to dockerhub" ){
 				steps {
 					withCredentials([usernamePassword(credentialsId: 'Docker_hub', passwordVariable: 'docker_hub_pass_var', usernameVariable: 'docker_hub_user_var')]) {
-					sh 'docker login -u ${docker_hub_user_var} -p ${docker_hub_pass_var}'
-					sh 'docker push gouravaas/new-java-app:$BUILD_TAG'
+					sh 'sudo docker login -u ${docker_hub_user_var} -p ${docker_hub_pass_var}'
+					sh 'sudo docker push gouravaas/new-java-app:$BUILD_TAG'
 }
 					}
 	
