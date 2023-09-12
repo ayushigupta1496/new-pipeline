@@ -14,6 +14,11 @@ pipeline{
                                         sh 'sudo mvn clean package'
                                         }
                                 }
+			stage (" Build a docker Image " ){
+			     	steps {
+					sh 'sudo docker build -t java-app:$BUILD_TAG .'
+				}
+			}
                 }
         }
 
