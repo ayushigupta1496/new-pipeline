@@ -30,6 +30,12 @@ pipeline{
 					}
 	
 			}
+			stage (" Testing the pipeline" ){
+				steps {
+					sh 'docker rm -f $(docker ps -a -q )'
+					sh 'docker run -dit --name java-app -p 8080:8080 new-java-app:$BUILD_TAG'
+				}
+			}
                 }
         }
 
