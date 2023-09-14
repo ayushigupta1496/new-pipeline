@@ -37,7 +37,7 @@ pipeline{
 			}
 			stage (" testing the website "){
 				steps {
-					sh 'curl --silent http://172.31.43.161:8080/java-web-app/ > java.txt'
+					sh 'curl http://172.31.43.161:8080/java-web-app/ > java.txt'
 				}
 			}
 			stage("Approval status") {
