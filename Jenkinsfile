@@ -37,7 +37,9 @@ pipeline{
 			}
 			stage ("Test the website" ){
 				steps {
-					sh 'curl --silent http://35.173.188.195:8080/java-web-app/ | grep -i "india" '
+					script {
+						sh 'curl --silent http://35.173.188.195:8080/java-web-app/ | grep -i "india" '
+					}
 				}
 			}
                 }
