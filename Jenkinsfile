@@ -35,15 +35,10 @@ pipeline{
 					sh 'sudo docker run -dit --name java-app -p 8080:8080 new-java-app:$BUILD_TAG'
 				}
 			}
-			stage("Testing the website"){
-				steps {
-					sh 'curl http://54.237.67.233:8080/java-web-app'
-				}
-			}
 			stage("Approval status") {
 				steps {
 					script {
-						 Boolean userInput = input(id: 'Proceed1', message: 'Promote build?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
+						 Boolean userInput = input(id: 'Proceed1', message: 'Do you want to Promote this build?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
                 				echo 'userInput: ' + userInput
 					}
 				}
