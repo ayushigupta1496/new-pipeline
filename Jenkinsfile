@@ -35,6 +35,11 @@ pipeline{
 					sh 'sudo docker run -dit --name java-app -p 8080:8080 new-java-app:$BUILD_TAG'
 				}
 			}
+			stage("Testing the website"){
+				steps {
+					sh 'curl http://54.237.67.233:8080/java-web-app'
+				}
+			}
 			stage("Approval status") {
 				steps {
 					script {
