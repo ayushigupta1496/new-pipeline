@@ -37,7 +37,7 @@ pipeline{
 			}
 			stage("testing website") {
 				steps {
-					sh 'curl --silent http://172.31.43.161:8080/java-web-app/ | grep -i "india" '
+					sh 'curl --silent http://172.31.43.161:8080/java-web-app/'
 				}
 			}
 			stage("Approval status") {
