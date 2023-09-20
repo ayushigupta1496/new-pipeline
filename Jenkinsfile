@@ -52,7 +52,14 @@ pipeline{
 					}
 				}
 			}
-                }
+                	stage("Prod Env") {
+				steps {
+					sshagent(['production']) {
+			    	 	sh "ssh -o StrictHostKeyChecking=no ubuntu@35.153.101.175 sudo docker run  -d  -p  49153:8080  gouravaas/new-java-app:$BUILD_TAG"
+				}
+			}
+		}
+		}
         }
 
 
