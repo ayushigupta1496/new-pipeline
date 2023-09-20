@@ -32,12 +32,12 @@ pipeline{
 			}
 			stage (" Testing the pipeline" ){
 				steps {
-					sh 'sudo docker run -dit --name java-app -p 8080:8080 new-java-app:$BUILD_TAG'
+					sh 'sudo docker run -dit -p 8080:8080 new-java-app:$BUILD_TAG'
 				}
 			}
 			stage("testing website") {
 				steps {
-					sh 'curl --silent http://172.31.43.161:8080/java-web-app/'
+					sh 'curl --silent http://172.31.43.161:8080/java-web-app/ | grep -i -E "(india|sr)" '
 				}
 			}
 			stage("Approval status") {
